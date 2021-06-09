@@ -3,9 +3,7 @@ from toggl.TogglPy import Toggl
 from .credentials import get_api_token
 
 
-def get_time_entries(
-    start_date="2021-06-07T00:00:00+03:00", end_date="2021-06-08T00:00:00+03:00"
-):
+def get_time_entries(start_date, end_date):
     toggl = Toggl()
     api_token = get_api_token()
     toggl.setAPIKey(api_token)
