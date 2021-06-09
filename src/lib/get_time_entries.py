@@ -17,7 +17,4 @@ def get_time_entries(
 
     time_entries_url = f"{time_entries_base_url}?{time_entries_params}"
 
-    time_entries = toggl.request(time_entries_url)
-
-    for time_entry in time_entries:
-        print(time_entry)
+    return toggl.request(time_entries_url)
