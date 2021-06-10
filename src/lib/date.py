@@ -71,7 +71,6 @@ def change_date_to_local_offset(date):
 
 def togglr_date_to_dict(date: str):
     date_with_local_offset = change_date_to_local_offset(date)
-    print("=> date_with_local_offset", date_with_local_offset)
 
     match = re.search(__DATE_REGEX, date_with_local_offset)
 
