@@ -11,6 +11,15 @@ class NHEntry(TypedDict):
     is_task: bool
 
 
+NH_ENTRY_HEADER = [
+    "day",
+    "start",
+    "end",
+    "description",
+    "is_task",
+]
+
+
 def time_entry_2_nh_entry(time_entry: TimeEntry, tag_to_be_task: str) -> NHEntry:
     start_date = togglr_date_to_dict(time_entry["start"])
     end_date = togglr_date_to_dict(time_entry["stop"])
