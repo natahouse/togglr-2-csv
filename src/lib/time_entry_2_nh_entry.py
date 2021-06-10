@@ -1,8 +1,17 @@
+from typing import TypedDict
 from .get_time_entries import TimeEntry
 from .date import togglr_date_to_dict
 
 
-def time_entry_2_nh_entry(time_entry: TimeEntry, tag_to_be_task: str):
+class NHEntry(TypedDict):
+    day: str
+    start: str
+    end: str
+    description: str
+    is_task: bool
+
+
+def time_entry_2_nh_entry(time_entry: TimeEntry, tag_to_be_task: str) -> NHEntry:
     start_date = togglr_date_to_dict(time_entry["start"])
     end_date = togglr_date_to_dict(time_entry["stop"])
     description = time_entry["description"]
