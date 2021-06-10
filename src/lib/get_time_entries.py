@@ -1,9 +1,26 @@
+from typing import List, TypedDict
 from urllib import parse
 from toggl.TogglPy import Toggl
 from .credentials import get_api_token
 
 
-def get_time_entries(start_date, end_date):
+class TimeEntry(TypedDict):
+    id: int
+    guid: str
+    wid: int
+    pid: int
+    billable: bool
+    start: str
+    stop: str
+    duration: int
+    description: str
+    tags: List[str]
+    duronly: bool
+    at: str
+    uid: int
+
+
+def get_time_entries(start_date, end_date) -> List[TimeEntry]:
     toggl = Toggl()
     api_token = get_api_token()
     toggl.setAPIKey(api_token)
