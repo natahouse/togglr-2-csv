@@ -23,8 +23,12 @@ NH_ENTRY_HEADER = [
 def time_entry_2_nh_entry(time_entry: TimeEntry, tag_to_be_task: str) -> NHEntry:
     start_date = togglr_date_to_dict(time_entry["start"])
     end_date = togglr_date_to_dict(time_entry["stop"])
-    description = time_entry["description"]
-    tags = time_entry["tags"]
+    description = "Sem Descrição"
+    if 'description' in time_entry:
+        description = time_entry["description"]
+    tags = []
+    if 'tags' in time_entry:
+        tags = time_entry["tags"]
 
     nh_entry = {
         "day": f"{start_date['day']}/{start_date['month']}",
