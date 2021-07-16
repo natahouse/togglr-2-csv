@@ -7,6 +7,7 @@ __ABSOLUTE_TOGGLER_CONFIG_PATH = path.expanduser(__TOGGLER_CONFIG_PATH)
 
 __DEFAULT_CONFIG_FILE_PATH = f"{__ABSOLUTE_TOGGLER_CONFIG_PATH}/credentials"
 
+
 def __check_file_exists():
     return path.exists(__DEFAULT_CONFIG_FILE_PATH)
 

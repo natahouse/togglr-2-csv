@@ -18,6 +18,7 @@ def get_api_token():
 
     return config[__CREDENTIALS_KEYS["api_token"]]
 
+
 def set_username(username):
     username_key = __CREDENTIALS_KEYS["name"]
 
@@ -26,6 +27,7 @@ def set_username(username):
     config[username_key] = username
 
     save_to_config(config)
+
 
 def get_username():
     config = get_config()
