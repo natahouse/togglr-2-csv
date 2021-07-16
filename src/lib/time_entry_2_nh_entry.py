@@ -2,7 +2,12 @@ from typing import TypedDict
 
 from lib.credentials import get_username
 from .get_time_entries import TimeEntry
-from .date import get_week_of_month, is_weekend, togglr_date_to_dict, get_weekday
+from .date import (
+    get_week_of_month_str,
+    is_weekend,
+    togglr_date_to_dict,
+    get_weekday_str,
+)
 
 
 class NHEntry(TypedDict):
@@ -42,9 +47,9 @@ def time_entry_2_nh_entry(time_entry: TimeEntry, tag_to_be_task: str) -> NHEntry
 
     nh_entry = {
         "day": f"{start_date['day']}/{start_date['month']}",
-        "weekday": get_weekday(time_entry["start"]),
+        "weekday": get_weekday_str(time_entry["start"]),
         "is_weekend": weekend,
-        "week_of_month": get_week_of_month(time_entry["start"]),
+        "week_of_month": get_week_of_month_str(time_entry["start"]),
         "responsible": responsible,
         "is_task": "Tarefa" if tag_to_be_task in tags else "Justificativa",
         "start": f"{start_date['hours']}:{start_date['minutes']}",

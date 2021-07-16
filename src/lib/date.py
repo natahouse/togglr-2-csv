@@ -106,7 +106,7 @@ __WEEKDAY_TO_STR = {
 }
 
 
-def __get_weekday_from_date(date: str):
+def get_weekday(date: str):
     date_with_local_offset = change_date_to_local_offset(date)
 
     date_obj = datetime.strptime(date_with_local_offset, "%Y-%m-%dT%H:%M:%S%z")
@@ -114,19 +114,19 @@ def __get_weekday_from_date(date: str):
     return date_obj.weekday()
 
 
-def get_weekday(date: str):
-    weekday = __get_weekday_from_date(date)
+def get_weekday_str(date: str):
+    weekday = get_weekday(date)
 
     return __WEEKDAY_TO_STR[weekday]
 
 
 def is_weekend(date: str):
-    weekday = __get_weekday_from_date(date)
+    weekday = get_weekday(date)
 
     return weekday >= 5
 
 
-def __get_week_of_month(date: datetime):
+def get_week_of_month(date: datetime):
     day = date.day
     month = date.month
     year = date.year
@@ -143,11 +143,11 @@ def __get_week_of_month(date: datetime):
     )
 
 
-def get_week_of_month(date: str):
+def get_week_of_month_str(date: str):
     date_with_local_offset = change_date_to_local_offset(date)
 
     date_obj = datetime.strptime(date_with_local_offset, "%Y-%m-%dT%H:%M:%S%z")
 
-    week_of_month = __get_week_of_month(date_obj)
+    week_of_month = get_week_of_month(date_obj)
 
     return f"Semana {week_of_month}"
