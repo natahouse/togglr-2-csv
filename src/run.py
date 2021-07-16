@@ -13,7 +13,8 @@ times = get_time_entries(start_date, end_date)
 
 nh_entries = [time_entry_2_nh_entry(time, "ipê") for time in times]
 
-nh_entries_only_tagged = [entry for entry in nh_entries if entry['is_task'] == True]
+# A proxima linha pode ser utilizada para "excluir" as entradas que não são tarefas do csv
+# nh_entries_only_tagged = [entry for entry in nh_entries if entry['is_task'] == True]
 
 nh_csv_lines = [nh_entry_2_nh_csv(nh_entry) for nh_entry in nh_entries]
 
