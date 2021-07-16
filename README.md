@@ -1,5 +1,7 @@
 # [WIP] toggl 2 csv
 
+`Nota: Só tem suporte pra linux/macosx por enquanto por conta do caminho do arquivo de configuração, contribuições são bem vindas.`
+
 A ideia desse projeto é agilizar a criação das planilhas através da utilização do [Toggl](https://track.toggl.com) em conjunto com esse script
 
 ## O que você vai precisar para rodar esse projeto?
