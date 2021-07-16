@@ -6,14 +6,14 @@ __CREDENTIALS_KEYS = {"api_token": "API_TOKEN"}
 def set_api_token(api_token):
     api_token_key = __CREDENTIALS_KEYS["api_token"]
 
-    credentials = get_config()
+    config = get_config()
 
-    credentials[api_token_key] = api_token
+    config[api_token_key] = api_token
 
-    save_to_config(credentials)
+    save_to_config(config)
 
 
 def get_api_token():
-    credentials = get_config()
+    config = get_config()
 
-    return credentials[__CREDENTIALS_KEYS["api_token"]]
+    return config[__CREDENTIALS_KEYS["api_token"]]
