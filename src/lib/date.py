@@ -1,4 +1,5 @@
-from datetime import datetime, time, timedelta, timezone
+from datetime import datetime, timedelta
+from calendar import monthcalendar
 import re
 
 
@@ -92,3 +93,61 @@ def togglr_date_to_dict(date: str):
             "minutes": match.group("minutes"),
             "seconds": match.group("seconds"),
         }
+
+
+__WEEKDAY_TO_STR = {
+    0: "segunda-feira",
+    1: "terça-feira",
+    2: "quarta-feira",
+    3: "quinta-feira",
+    4: "sexta-feira",
+    5: "sábado",
+    6: "domingo",
+}
+
+
+def __get_weekday_from_date(date: str):
+    date_with_local_offset = change_date_to_local_offset(date)
+
+    date_obj = datetime.strptime(date_with_local_offset, "%Y-%m-%dT%H:%M:%S%z")
+
+    return date_obj.weekday()
+
+
+def get_weekday(date: str):
+    weekday = __get_weekday_from_date(date)
+
+    return __WEEKDAY_TO_STR[weekday]
+
+
+def is_weekend(date: str):
+    weekday = __get_weekday_from_date(date)
+
+    return weekday >= 5
+
+
+def __get_week_of_month(date: datetime):
+    day = date.day
+    month = date.month
+    year = date.year
+
+    return next(
+        (
+            week_number
+            for week_number, days_of_week in enumerate(
+                monthcalendar(year, month), start=1
+            )
+            if day in days_of_week
+        ),
+        None,
+    )
+
+
+def get_week_of_month(date: str):
+    date_with_local_offset = change_date_to_local_offset(date)
+
+    date_obj = datetime.strptime(date_with_local_offset, "%Y-%m-%dT%H:%M:%S%z")
+
+    week_of_month = __get_week_of_month(date_obj)
+
+    return f"Semana {week_of_month}"
