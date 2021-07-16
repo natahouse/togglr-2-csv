@@ -44,7 +44,8 @@ Já dentro da página role até o final dela e clique em "Click to reveal"
 Copie a sua chave e agora vamos salvar essa credencial. Em seu editor de texto preferido, abra o arquivo `~/.togglr/credentials` e cole a sua credencial no seguinte formato:
 
 ```txt
-API_TOKEN=a_chave_que_você_acabou_de_copiar_aqui
+API_TOKEN=<A chave que você acabou de copiar aqui>
+USERNAME=<O seu nome como descrito na planilha>
 ```
 
 ## Utilizando
