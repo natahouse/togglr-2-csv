@@ -11,7 +11,7 @@ def __check_file_exists():
     return path.exists(__DEFAULT_CONFIG_FILE_PATH)
 
 
-def config_file_to_dict():
+def get_config():
     if not __check_file_exists():
         Path(__ABSOLUTE_TOGGLER_CONFIG_PATH).mkdir(parents=True, exist_ok=True)
         open(__DEFAULT_CONFIG_FILE_PATH, "a").close()
@@ -38,7 +38,7 @@ def config_file_to_dict():
     return config_dict
 
 
-def dict_to_config_file(dict):
+def save_to_config(dict):
     config = ""
 
     for key in dict:
